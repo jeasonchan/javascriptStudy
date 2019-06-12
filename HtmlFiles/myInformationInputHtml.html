@@ -12,9 +12,9 @@
 <p>职务：
     <select id="job">
         <option value=""></option>  <!--用于显示空白-->
-        <option value="pm">经理</option>
-        <option value="tl">技术Leader</option>
-        <option value="dev">开发</option>
+        <option value="经理">经理</option>
+        <option value="技术Leader">技术Leader</option>
+        <option value="开发">开发</option>
     </select>
 </p>
 <p><button id="sureButton">录入</button></p>
@@ -34,13 +34,16 @@
     var workIdInput=document.getElementById('workId');
     var jobSelect=document.getElementById('job');
     var sureButton=document.getElementById('sureButton');
-    var table=document.getElementById('myTable');
+    var mytable=document.getElementById('myTable');
+
 
     //为点击按钮添加事件
     sureButton.onclick=function(){
         //先从输入框和多选框构建出一行
+        var myNewTr=newTr(nameInput.value,workIdInput.value,jobSelect.value);
 
         //将一行添加至表格中
+        mytable.appendChild(myNewTr);
 
         //将输入框中的内容清除
         nameInput.value='';
@@ -49,9 +52,31 @@
     }
 
     //
-    function () {
-        
+    function newTr(name,job,workId) {
+        var myNewTr=document.createElement('tr');
+
+        var tdName=document.createElement('td');
+        tdName.innerHTML=name;
+        var tdJob=document.createElement('td');
+        tdJob.innerHTML=job;
+        var tdworkId=document.createElement('td');
+        tdworkId.innerHTML=workId;
+        var deleteAction=document.createElement('button');
+        deleteAction.innerHTML="删除";
+
+        myNewTr.appendChild(tdName);
+        myNewTr.appendChild(tdJob);
+        myNewTr.appendChild(tdworkId);
+        myNewTr.appendChild(deleteAction);
+        console.log("hahha");
+        return myNewTr;
     }
+
+    //
+    function deleteAtr(){
+
+    }
+
 
 
 
