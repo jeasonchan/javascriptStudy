@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>名单录入系统</title>
+</head>
+
+<body>
+<h1>名单录入系统</h1>
+<p>姓名：<input type="text" id="name"></p>
+<p>工号：<input type="number" id="workId"></p>
+<p>职务：
+    <select id="job">
+        <option value=""></option>  <!--用于显示空白-->
+        <option value="pm">经理</option>
+        <option value="tl">技术Leader</option>
+        <option value="dev">开发</option>
+    </select>
+</p>
+<p><button id="sureButton">录入</button></p>
+<table id="myTable">
+    <tr> <!--表示一行-->
+        <th>姓名</th><!--th表格标题列，在tr中的列，其实就是一个单元格-->
+        <th>职务</th>
+        <th>工号</th>
+        <th>操作</th>
+    </tr>
+</table>
+</body>
+
+<script>
+    //绑定变量和节点
+    var nameInput=document.getElementById('name');
+    var workIdInput=document.getElementById('workId');
+    var jobSelect=document.getElementById('job');
+    var sureButton=document.getElementById('sureButton');
+    var table=document.getElementById('myTable');
+
+    //为点击按钮添加事件
+    sureButton.onclick=function(){
+        //先从输入框和多选框构建出一行
+
+        //将一行添加至表格中
+
+        //将输入框中的内容清除
+        nameInput.value='';
+        workIdInput.value='';
+        jobSelect.value='';
+    }
+
+    //
+    function () {
+        
+    }
+
+
+
+
+</script>
+</html>

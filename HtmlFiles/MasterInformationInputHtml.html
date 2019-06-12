@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>大佬的名单录入页面</title>
+
+    <style type="text/css">
+        a{text-decoration:none;}
+        div{margin:0px auto;height:25px;width:720px;}
+        table{width: 500px;border: 1px solid gray;border-collapse: collapse;margin:50px auto;}
+        th,td{line-height: 35px;border: 1px solid gray;text-align: center;}
+    </style>
+
+</head>
+
+<body>
+<div>  <!--属性值使用双引号-->
+    <div><label for="labelName" >姓名：</label> <input type="text" id="labelName"></div>
+    <div><label for="labelAge">年龄：</label> <input type="text" id="labelAge"></div>
+    <div><label for="labelAddress">住址：</label> <input type="text" id="labelAddress"></div>
+    <div><button id="buttonAdd" >添加</button></div>
+</div>
+<br>
+</body>
+
+<script type="text/javascript">
+    //DOM的基本对象是node，代表着一个元素实例对象
+
+    //查找节点
+    var VarLabelName=document.getElementById('labelName');//获取元素name或者id使用单引号
+    var VarLabelAge=document.getElementById('labelAge');
+    var VarLabelAddress=document.getElementById('labelAddress');
+    var VarButtonAdd=document.getElementById('buttonAdd');
+    //创建table
+    var VarNewTable=document.createElement('table');
+    //创建tr，创建表格其中的一行用于稍后的表格赋值
+    //这个其实是表格首行
+    var tr=gettr('姓名','年龄','住址','操作',true);
+
+    //添加点击事件
+    VarButtonAdd.onclick=clickEvent;//代码层面没有复用，可以直接用匿名函数
+
+    //点击事件函数
+    function clickEvent(){
+        //判断输入框是否为空
+        if(VarLabelName.value==''||VarLabelAddress.value==''||VarLabelAddress.value==''){
+            return;//其中任意一个为空都不执行
+        }else{
+            document.body.appendChild(VarNewTable);//将table追加到body中，默认加到末尾
+            var tr=gettr(VarLabelName.value,VarLabelAge.value,VarLabelAddress.value,'删除',false);//输入内容
+            //清除输入框内容,输入框中的字消失
+            VarLabelName.value='';
+            VarLabelAge.value='';
+            VarLabelAddress.value='';
+        }
+    }
+
+    //创建行
+    //输入参数的含义：姓名，年龄，住址，操作，布尔值，元素类的名称
+    function gettr(name,age,www,cz,bool,elementClass){
+        var otr=document.createElement('tr');//创建的元素种类名称，返回的是对应元素的一个node
+        //创建列
+        if(bool){
+            var oth1=getth(name,false,'th');
+            var oth2=getth(age,false,'th');
+            var oth3=getth(www,false,'th');
+            var oth4=getth(cz,false,'th');
+        }else{
+            var oth1=getth(name,false,'td');
+            var oth2=getth(age,false,'td');
+            var oth3=getth(www,false,'td');
+            var oth4=getth(cz,true,'td');//表示当前的表格是删除按钮
+        }
+        //将列追加到行中
+        otr.appendChild(oth1);
+        otr.appendChild(oth2);
+        otr.appendChild(oth3);
+        otr.appendChild(oth4);
+
+        VarNewTable.appendChild(otr);//将tr追加到table中
+        return otr;
+    }
+
+    //创建单行的单列，其实就是创建一个单元格
+    function getth(content,sl,elementClass){
+        var oth=document.createElement(elementClass);
+        if (sl) {//表示是否为删除操作按钮
+            //创建a链接
+            var aa=document.createElement('a');
+            aa.innerHTML=content;//为a链接添加内容
+            aa.href='#';//为链接添加属性
+            //为链接添加点击事件
+            aa.onclick=function(){
+                if(confirm('是否删除?')){//判断是否删除
+                    var tth=this.parentNode.parentNode;//this这里指这个超链接
+                    tth.parentNode.removeChild(tth);
+                }
+            }
+            oth.appendChild(aa);//将a链接追加到列中
+        }else{
+            oth.innerHTML=content;//为列附加内容
+        }
+        return oth;//返回值到列
+    }
+</script>
+
+
+</html>
