@@ -11,10 +11,22 @@
     <!-- html中的函数调动名必须写全，必须写onclick="changeContent()"，带上函数的括号 -->
 
     <script>
+        //html页面内部的script本质都是“联通”的，所以能访问到text这个变量
         function changeContent() {
             console.log("button按钮被按了一次！")
-            document.getElementById("p1").innerHTML = "我是js脚本更新dom得到的文本！"
+            document.getElementById("p1").innerHTML = text
         }
+
+    </script>
+
+<!-- 加载指定来源的脚本文件！ -->   
+    <script src="../js脚本/js简介.js"></script> 
+
+    <script>
+        var text = "这是用js脚本的更改得到的脚本！"
+
+        document.write("<p>这是直接用js脚本生成的h1标签！</p>")
+        document.write("<p>事实证明，script 标签可以出现的html文件的任何地方，包括body和head标签之外的地方！</p>")
 
     </script>
 

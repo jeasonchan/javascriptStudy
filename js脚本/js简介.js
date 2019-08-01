@@ -1,0 +1,1 @@
+document.write("<p>外部的、单独的js文件新建dom树对象。</p>")
