@@ -1,1 +1,28 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <h1>我是head里的一段话！</h1>
+</head>
+
+<body>
+    <p id="p1">我是静态HTML中的一个段落。</p>
+    <button type="button" onclick="changeContent()">触发脚本函数，替换上面的文字</button>
+    <!-- html中的函数调动名必须写全，必须写onclick="changeContent()"，带上函数的括号 -->
+
+    <script>
+        function changeContent() {
+            console.log("button按钮被按了一次！")
+            document.getElementById("p1").innerHTML = "我是js脚本更新dom得到的文本！"
+        }
+
+    </script>
+
+</body>
+
+<script>
+    console.log("看看body和head之外的脚本能否被执行！")
+    console.log("事实证明：body和head之外的脚本依然可以被执行，而且是在页面加载时自动执行。")
+</script>
+
+</html>
