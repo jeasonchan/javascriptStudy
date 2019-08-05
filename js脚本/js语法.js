@@ -48,9 +48,118 @@ console.log(z);
 
 //js数据类型，数字、字符串、数组（js数组可以放入不同数据类型）、对象实例等
 
+//变量必须以字母、$或者_开头，比如，$event变量
+var $event = "233333";
+console.log($event);
 
+//未使用值进行初始化的变量都是 undefined 的
+var undefinedVar;
+console.log(undefinedVar);   //打印的值为undefined
 
+//js的数据类型：
+// 字符串（String）、数字(Number)、布尔(Boolean)、数组(Array)、对象(Object)、空（Null）、未定义（Undefined，
+// 共计有限的7种。
+var xVar;
+console.log(xVar);
+xVar = 5;
+console.log(xVar);
+xVar = "hello world!";
+console.log(xVar);
+xVar = '你好，世界！';
+console.log(xVar);
+xVar = "你好" + "\n" + "世界";
+console.log(xVar);
 
+//字符串实示例
+var answer = "It's alright";
+var answer = "He is called 'Johnny'";
+var answer = 'He is called "Johnny"';
 
+//布尔值示例
+var trueVar = true;
+var falseVar = false;
 
+//js数组，大致有三种声明并赋值的方式：
+//方式一：先创建Array对象，再进行赋值
+var conuntries = new Array();
+conuntries[1] = "Japan";//故意不赋值附一个元素
+console.log(conuntries);//打印为：[ <1 empty item>, 'Japan' ]
+conuntries[3] = 123;
+console.log(conuntries);//打印为：[ <1 empty item>, 'Japan', <1 empty item>, 123 ]
 
+//方式二：创建时就进行集中初始化
+var conuntries = new Array("China", "Japan", "USA", 11111, `HAHAHAH`);
+console.log(conuntries);//打印为：[ 'China', 'Japan', 'USA', 11111, 'HAHAHAH' ]
+
+//方式三：
+var conuntries = ["China", "Japan", "USA", 22222, `HAHAHAH`];
+console.log(conuntries);//打印为：[ 'China', 'Japan', 'USA', 22222, 'HAHAHAH' ]
+
+//对象实例，以花括号分隔，内部以键值对的形式定义成属性值，如：
+var person = { contry: "China", age: 20, color: "yellow" };
+//也可以以逗号为分割点，转行定义
+//对象属性索引有两种方式：
+console.log(person.contry);//像C++或者Java一样，以域操作符的方式索引属性值
+console.log(person["color"]);//像数组或者map一样取值
+try {
+    console.log(person[color]);//这里的color会被当做变量，从而报color未定义的异常
+} catch (e) {
+    console.log(e);
+}
+
+//Undefined 这个值表示变量不含有值，可以通过将变量的值设置为 null 来清空变量。
+var temp;
+console.log(temp);//打印：undefined
+temp = null;
+console.log(temp);//打印：null
+
+/*undefined和null对比：
+1. 相同点
+if 判断语句中，两者都会被转换为false
+
+2. 不同点
+Number转换的值不同，Number(null)输出为0, Number(undefined)输出为NaN；
+
+null表示一个值被定义了，但是这个值是空值，作为函数的参数，表示函数的参数不是对象；
+
+作为对象原型链的终点 （Object.getPrototypeOf(Object.prototype)），定义一个值为null是合理的，但定义为undefined不合理（var name = null）；　
+
+undefined表示缺少值，即此处应该有值，但是还没有定义，变量被声明了还没有赋值，就为undefined；
+
+调用函数时应该提供的参数还没有提供，该参数就等于undefined；
+
+对象没有赋值的属性，该属性的值就等于undefined；
+
+函数没有返回值，默认返回undefined；
+
+总结！该有的，却没有，即为undefined。
+*/
+
+//声明变量类型
+var stringObject = new String;//声明了一个字符串对象
+console.log(stringObject);//打印：[String: '']，表情时String对象，值为''
+stringObject = null;
+console.log(stringObject);//打印：null
+stringObject = undefined;
+console.log(stringObject);//打印：undefined
+stringObject = "";
+console.log(stringObject);//打印：（实际上打印了一个空字符串）
+
+var numberObject = new Number;
+console.log(numberObject.valueOf());//调用Number对象的valueOf()方法，得到该包装类的值
+console.log(numberObject);//打印：[Number: 0]，值为0的Number对象
+
+var boolenObject = new Boolean;
+console.log(boolenObject);//打印：false
+
+var arrayObject = new Array;
+console.log(arrayObject);//打印：[]，空数组，区别于null和undefined
+
+var object = new Object
+console.log(object);//打印：{}，空对象
+
+//js里的变量都是全局变量！任何不声明的对象属性都会成为全局对象属性！
+
+//js变量均为对象，当显式地声明为某一类型对象时，就创建个了一个对象，比如：
+// var car ="hahahah"; 其实就是一个String包装类实例
+// car.valueOf();调用包装类实例的方法
